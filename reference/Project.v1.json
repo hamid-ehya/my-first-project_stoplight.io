@@ -1,0 +1,208 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Project",
+    "version": "1.0",
+    "contact": {
+      "name": "Hamid",
+      "url": "www.hamid.com",
+      "email": "hamid@yahoo.com"
+    },
+    "description": "Operations on the Entity  "
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "MyServer"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Entity"
+    }
+  ],
+  "paths": {
+    "/Entity": {
+      "get": {
+        "summary": "List Of Entities",
+        "tags": [
+          "Entity"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Entity"
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": [
+                      {
+                        "id": 10,
+                        "name": "Ali",
+                        "code": "ir_1",
+                        "gender": "male"
+                      },
+                      {
+                        "id": 20,
+                        "name": "Alieh",
+                        "code": "ir_2",
+                        "gender": "female"
+                      }
+                    ]
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Entity"
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": [
+                      {
+                        "id": 0,
+                        "name": "string",
+                        "code": "string",
+                        "gender": "male"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-Entity-list",
+        "description": "Gets all entities",
+        "security": [
+          {
+            "APIKey": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "Add New Entity",
+        "operationId": "post-Entity",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Entity"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "id": 10,
+                      "name": "name",
+                      "code": "code",
+                      "gender": "male"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Add a new Entity",
+        "security": [
+          {
+            "APIKey": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Entity"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "id": 0,
+                    "name": "name",
+                    "code": "code",
+                    "gender": "male"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The Entity object to add."
+        },
+        "tags": [
+          "Entity"
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Entity": {
+        "title": "Entity",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "code": {
+            "type": "string",
+            "maxLength": 10
+          },
+          "gender": {
+            "type": "string",
+            "enum": [
+              "male",
+              "female"
+            ],
+            "default": "male"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ],
+        "x-examples": {
+          "example-1": {
+            "id": 100,
+            "name": "Hamid",
+            "code": "ir_123",
+            "gender": "male"
+          },
+          "example-2": {
+            "id": 200,
+            "name": "Zahra",
+            "code": "ir_654",
+            "gender": "female"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "APIKey": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  },
+  "security": [
+    {
+      "APIKey": []
+    }
+  ]
+}
