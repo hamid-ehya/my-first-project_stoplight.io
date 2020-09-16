@@ -1,0 +1,156 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Tag",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080"
+    }
+  ],
+  "paths": {
+    "/Tag": {
+      "post": {
+        "summary": "",
+        "operationId": "add-Tag",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          }
+        },
+        "description": "Add a Tag with the specified data.",
+        "tags": [
+          "Tag"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag_NoID"
+              }
+            }
+          },
+          "description": ""
+        }
+      }
+    },
+    "/Tag/{id}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "Tag"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Tag Found"
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          }
+        },
+        "operationId": "get-Tag",
+        "description": "Get a Tag by the specified ID."
+      },
+      "put": {
+        "summary": "",
+        "operationId": "update-Tag",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Tag"
+        ],
+        "description": "Update an existing Tag by the specified ID with the specified data.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag_NoID"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "",
+        "operationId": "delete-Tag",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Tag"
+        ],
+        "description": "Delete a Tag by the specified ID."
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Tag": {
+        "title": "Tag",
+        "type": "object",
+        "x-tags": [
+          "Tag"
+        ],
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "x-examples": {}
+      },
+      "Tag_NoID": {
+        "title": "Tag_NoID",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "x-tags": [
+          "Tag"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Tag"
+    }
+  ]
+}
