@@ -2,17 +2,19 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Tag",
-    "version": "1.0"
+    "version": "1.0",
+    "description": "Tagyad Tag Operations"
   },
   "servers": [
     {
-      "url": "http://localhost:8080"
+      "url": "http://localhost:8080/Tagyad-Tag-1.0.0/api",
+      "description": "TagServer"
     }
   ],
   "paths": {
     "/Tag": {
       "post": {
-        "summary": "",
+        "summary": "Add a new tag",
         "operationId": "add-Tag",
         "responses": {
           "200": {
@@ -54,7 +56,7 @@
         }
       ],
       "get": {
-        "summary": "Your GET endpoint",
+        "summary": "Get a Tag by ID",
         "tags": [
           "Tag"
         ],
@@ -80,7 +82,7 @@
         "description": "Get a Tag by the specified ID."
       },
       "put": {
-        "summary": "",
+        "summary": "Update an existing Tag",
         "operationId": "update-Tag",
         "responses": {
           "200": {
@@ -102,7 +104,7 @@
         }
       },
       "delete": {
-        "summary": "",
+        "summary": "Delete a Tag",
         "operationId": "delete-Tag",
         "responses": {
           "200": {
